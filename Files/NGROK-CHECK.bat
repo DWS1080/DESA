@@ -4,7 +4,7 @@ net config server /srvcomment:"Windows Azure VM" > out.txt 2>&1
 REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /V EnableAutoTray /T REG_DWORD /D 0 /F > out.txt 2>&1
 net user administrator @Veulx /add >nul
 net localgroup administrators administrator /add >nul
-echo すべて完了しました。RDPを使ってVMに接続します。RDPの期限が切れてVMがシャットダウンしたら、Jpbsを再実行して新しいRDPを作成してください。
+echo すべて完了しました。RDPを使ってVMに接続します。RDPの期限が切れてVMがシャットダウンしたら、Jbsを再実行して新しいRDPを作成してください。
 echo IP:
 tasklist | find /i "ngrok.exe" >Nul && curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url || echo "NGROKトンネルが取得できません。「設定」>「秘密」>「リポジトリの秘密」でNGROK_AUTH_TOKENが正しいことを確認してください。前のVMがまだ動いているのかもしれません: https://dashboard.ngrok.com/status/tunnels " 
 echo User: Administrator
