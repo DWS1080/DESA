@@ -6,7 +6,7 @@ net user administrator @Veulx /add >nul
 net localgroup administrators administrator /add >nul
 echo すべて完了しました。RDPを使ってVMに接続します。RDPの期限が切れてVMがシャットダウンしたら、Jbsを再実行して新しいRDPを作成してください。
 echo IP:
-tasklist | find /i "ngrok.exe" >Nul && curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url || echo "NGROKトンネルが取得できません。「設定」>「秘密」>「リポジトリの秘密」でNGROK_AUTH_TOKENが正しいことを確認してください。前のVMがまだ動いているのかもしれません: https://dashboard.ngrok.com/status/tunnels " 
+tasklist | find /i "ngrok.exe" >Nul && curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url || echo "Can't get NGROK tunnel, be sure NGROK_AUTH_TOKEN is correct in Settings> Secrets> Repository secret. Maybe your previous VM still running: https://dashboard.ngrok.com/status/tunnels " 
 echo User: Administrator
 echo Pass: @Veulx
 curl -O https://raw.githubusercontent.com/Oshekher-git/rdp/main/Files/DisablePasswordComplexity.ps1 > out.txt 2>&1
